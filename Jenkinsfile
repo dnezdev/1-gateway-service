@@ -18,7 +18,7 @@ pipeline {
 
   environment {
     DOCKER_CREDENTIALS = credentials("dockerhub")
-    IMAGE_NAME = "<your-dockerhub-username>" + "/" + "jobber-gateway"
+    IMAGE_NAME = "dnezdev" + "/" + "jobber-gateway"
     IMAGE_TAG = "stable-${BUILD_NUMBER}"
   }
 
@@ -34,13 +34,13 @@ pipeline {
         sh "[ -d pipeline ] || mkdir pipeline"
         dir("pipeline") {
           // Add your jenkins automation url to url field
-          git branch: 'main', credentialsId: 'github', url: ''
+          git branch: 'main', credentialsId: 'github', url: 'https://github.com/dnezdev/10-jenkins-automation'
           script {
             groovyMethods = load("functions.groovy")
           }
         }
         // Add your gateway github url to url field
-        git branch: 'main', credentialsId: 'github', url: ''
+        git branch: 'main', credentialsId: 'github', url: 'https://github.com/dnezdev/1-gateway-service'
         sh 'npm install'
       }
     }
