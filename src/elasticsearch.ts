@@ -17,7 +17,7 @@ class ElasticSearch {
 
   public async checkConnection(): Promise<void> {
     let isConnected = false;
-    while(!isConnected) {
+    while (!isConnected) {
       log.info('GatewayService Connecting to ElasticSearch');
       try {
         const health: ClusterHealthResponse = await this.elasticSearchClient.cluster.health({});
